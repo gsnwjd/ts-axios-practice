@@ -1,5 +1,6 @@
 import { parse } from 'path'
-import { isPlainObject } from './util'
+import { deepMerge, isPlainObject } from './util'
+import { Method } from '../types/index'
 
 function normalizeHeaderName(headers: any, normalizedName: string): void {
   // 大小写问题，header不关心是否大小写
@@ -43,4 +44,18 @@ export function parseHeaders(headers: string): any {
   })
 
   return parsed
+}
+
+// 我们需要把headers压成一级的
+export function flattenHeaders(headers: any, method: Method): any {
+  if (!headers) {
+    return headers
+  }
+  headers = deepMerge(headers.common, headers[method], headers)
+  const methodsToDelete = ['delete', 'get', 'head', 'options', 'post', 'put', 'patch', 'common']
+  methodsToDelete.forEach(method => {
+    delete headers[method]
+  })
+
+  return headers
 }

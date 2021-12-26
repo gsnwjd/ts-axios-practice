@@ -50,16 +50,12 @@
     "transform": {
       ".(ts|tsx)": "ts-jest"
     },
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
       "js"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/test/"
     ],
     "coverageThreshold": {
       "global": {
@@ -70,7 +66,11 @@
       }
     },
     "collectCoverageFrom": [
-      "src/*.{js,ts}"
+      "src/*.{js,ts}",
+      "src/**/*.{js,ts}"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/boot.ts"
     ]
   },
   "prettier": {
@@ -87,11 +87,15 @@
     "@commitlint/config-conventional": "^7.1.2",
     "@types/jest": "^23.3.2",
     "@types/node": "^10.11.0",
+    "@types/nprogress": "^0.2.0",
+    "@types/qs": "^6.5.3",
     "body-parser": "^1.19.0",
     "colors": "^1.3.2",
     "commitizen": "^3.0.0",
+    "connect-multiparty": "^2.2.0",
     "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
+    "css-loader": "^6.5.1",
     "cz-conventional-changelog": "^2.1.0",
     "express": "^4.17.1",
     "husky": "^1.0.1",
@@ -99,8 +103,10 @@
     "jest-config": "^23.6.0",
     "lint-staged": "^8.0.0",
     "lodash.camelcase": "^4.3.0",
+    "nprogress": "^0.2.0",
     "prettier": "^1.14.3",
     "prompt": "^1.0.0",
+    "qs": "^6.7.0",
     "replace-in-file": "^3.4.2",
     "rimraf": "^2.6.2",
     "rollup": "^0.67.0",
@@ -111,6 +117,7 @@
     "rollup-plugin-typescript2": "^0.18.0",
     "semantic-release": "^15.9.16",
     "shelljs": "^0.8.3",
+    "style-loader": "^3.3.1",
     "travis-deploy-once": "^5.0.9",
     "ts-jest": "^23.10.2",
     "ts-loader": "^9.2.6",
@@ -120,10 +127,14 @@
     "tslint-config-standard": "^8.0.1",
     "tslint-loader": "^3.5.4",
     "typedoc": "^0.12.0",
-    "typescript": "^3.0.3",
+    "typescript": "^3.9.10",
     "url": "^0.11.0",
     "webpack": "^5.58.2",
     "webpack-dev-middleware": "^5.2.1",
     "webpack-hot-middleware": "^2.25.1"
+  },
+  "dependencies": {
+    "atob": "^2.1.2",
+    "cookie-parser": "^1.4.6"
   }
 }
