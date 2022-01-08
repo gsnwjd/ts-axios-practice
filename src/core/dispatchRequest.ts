@@ -10,9 +10,18 @@ export default function dispatchRequest(config: AxiosRequestConfig): AxiosPromis
   processConfig(config)
   // 先处理config，url
 
-  return xhr(config).then(res => {
-    return transformResponseData(res)
-  })
+  return xhr(config).then(
+    res => {
+      return transformResponseData(res)
+    },
+    // 报错的时候也要处理错误信息作为json返回
+    e => {
+      if (e && e.response) {
+        e.response = transformResponseData(e.response)
+      }
+      return Promise.reject(e)
+    }
+  )
 }
 
 function processConfig(config: AxiosRequestConfig): void {

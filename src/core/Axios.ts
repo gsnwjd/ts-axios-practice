@@ -1,6 +1,13 @@
 // 我们创建一个 Axios 类，来实现接口定义的公共方法。
 // 我们创建了一个 core 目录，用来存放发送请求核心流程的代码。
-import { AxiosPromise, AxiosRequestConfig, AxiosResponse, Method, ResolvedFn, RejectedFn } from '..'
+import {
+  AxiosPromise,
+  AxiosRequestConfig,
+  AxiosResponse,
+  Method,
+  ResolvedFn,
+  RejectedFn
+} from '../types'
 import dispatchRequest, { transformURL } from './dispatchRequest'
 import InterceptorManager from './InterceptorManager'
 import mergeConfig from './mergeConfig'
@@ -37,6 +44,8 @@ export default class Axios {
     }
     // 在发送请求之前就合并一下配置
     config = mergeConfig(this.defaults, config)
+    // method转为小写
+    config.method = config.method.toLowerCase()
 
     const chain: PromiseChain<any>[] = [
       {
@@ -95,7 +104,11 @@ export default class Axios {
     return transformURL(config)
   }
 
-  _requestMethodWithoutData(method: Method, url: string, config?: AxiosRequestConfig) {
+  _requestMethodWithoutData(
+    method: Method,
+    url: string,
+    config?: AxiosRequestConfig
+  ): AxiosPromise {
     return this.request(
       Object.assign(config || {}, {
         method,
@@ -104,7 +117,12 @@ export default class Axios {
     )
   }
 
-  _requestMethodWithData(method: Method, url: string, data?: any, config?: AxiosRequestConfig) {
+  _requestMethodWithData(
+    method: Method,
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): AxiosPromise {
     return this.request(
       Object.assign(config || {}, {
         method,

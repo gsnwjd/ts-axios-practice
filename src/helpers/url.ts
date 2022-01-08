@@ -70,7 +70,7 @@ export function buildURL(
 
 // 是否是绝对地址,绝对地址返回
 export function isAbsoluteURL(url: string): boolean {
-  return /(^[a-z][a-z\d\+\-\.]*:)?\/\//i.test(url)
+  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url)
 }
 
 // 处理斜线
