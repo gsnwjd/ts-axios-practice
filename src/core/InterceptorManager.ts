@@ -14,12 +14,12 @@ export default class InterceptorManager<T> {
   }
 
   use(resolved: ResolvedFn<T>, rejected?: RejectedFn): number {
-    if (rejected) {
-      this.interceptors.push({
-        resolved,
-        rejected
-      })
-    }
+    // if (rejected) {
+    this.interceptors.push({
+      resolved,
+      rejected
+    })
+    // }
 
     return this.interceptors.length - 1
   }

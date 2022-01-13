@@ -24,9 +24,13 @@ function deepMergeStrat(val1: any, val2: any): any {
     return val2
   } else if (isPlainObject(val1)) {
     return deepMerge(val1)
-  } else if (typeof val1 !== 'undefined') {
+  } else {
+    // 无论是val1 === 'undefined' 还是 val1!=='undefined' 最后的结果都要返回undefined
     return val1
   }
+  // else if (typeof val1 !== 'undefined') {
+  //   return val1
+  // }
 }
 // 深入拷贝的策略应该是这些
 const stratkeysDeepMerge = ['headers', 'auth']

@@ -11,11 +11,11 @@ import qs from 'qs'
 //   console.log(res)
 // })
 
-// axios.post('http://localhost:8088/more/server2',{},{
-//   withCredentials:true
-// }).then(res=>{
-//   console.log(res)
-// })
+axios.post('http://localhost:8088/more/server2',{},{
+  withCredentials:false
+}).then(res=>{
+  console.log(res)
+})
 
 // 测试XSRF防御的demo
 // const instance =  axios.create({

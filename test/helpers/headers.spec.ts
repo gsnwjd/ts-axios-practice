@@ -35,11 +35,11 @@ describe('helpers:headers', () => {
       expect(headers['Content-length']).toBe(1024)
     })
 
-    //data是json的时候content-type自动解析成 application/json;charset=uft-8
+    //data是json的时候content-type自动解析成 application/json;charset=utf-8
     test('should set Content-Type if not set and data is PlainObject', () => {
       const headers: any = {}
       processHeaders(headers, { a: 1 })
-      expect(headers['Content-Type']).toBe('application/json;charset=uft-8')
+      expect(headers['Content-Type']).toBe('application/json;charset=utf-8')
     })
 
     test('should set not Content-Type if not set and data is not PlainObject', () => {
