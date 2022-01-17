@@ -1,5 +1,5 @@
 {
-  "name": "ts-axios-new",
+  "name": "ts-axios-gsn-practice",
   "version": "0.1.5",
   "description": "",
   "keywords": [],
@@ -9,10 +9,10 @@
   "files": [
     "dist"
   ],
-  "author": "ustbhuangyi <280309453@qq.com>",
+  "author": "gsnwjd <1379598883@qq.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ustbhuangyi/ts-axios"
+    "url": "https://github.com/gsnwjd/ts-axios-practice"
   },
   "license": "MIT",
   "engines": {
@@ -22,7 +22,7 @@
     "dev": "node examples/server.js",
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src",
+    "build": "tsc --module commonjs && rollup -c rollup.config.ts",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
